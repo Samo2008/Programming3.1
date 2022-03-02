@@ -53,39 +53,39 @@ function generator(matLen, gr, grEat, pr, M, pm, mg) {
 
 let side = 20;
 
-let matrix = generator(15, 30, 10, 7, 12, 15);
+let matrix = generator(15, 30, 10, 7, 12, 15, 12);
 
-let grassArr = []
-let grassEaterArr = []
-let PredatorArr = []
-let MushroomsArr = []
-let PoisonousMushroomsArr = []
-let MushroomGrowerArr = []
+let grassArr = [];
+let grassEaterArr = [];
+let PredatorArr = [];
+let MushroomsArr = [];
+let PoisonousMushroomsArr = [];
+let MushroomGrowerArr = [];
 
 function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-    frameRate(3)
+    frameRate(3);;
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
                 let gr = new Grass(x, y)
-                grassArr.push(gr)
+                grassArr.push(gr);
             } else if (matrix[y][x] == 2) {
                 let grE = new GrassEater(x, y)
-                grassEaterArr.push(grE)
+                grassEaterArr.push(grE);
             } else if (matrix[y][x] == 3) {
-                let pr = new Predator(x, y)
-                PredatorArr.push(pr)
+                let pr = new Predator(x, y);
+                PredatorArr.push(pr);
             } else if (matrix[y][x] == 4) {
-                let M = new Mushrooms(x, y)
-                MushroomsArr.push(M)
+                let M = new Mushrooms(x, y);
+                MushroomsArr.push(M);
             } else if (matrix[y][x] == 5) {
-                let pm = new PoisonousMushrooms(x, y)
-                PoisonousMushroomsArr.push(pm)
+                let pm = new PoisonousMushrooms(x, y);
+                PoisonousMushroomsArr.push(pm);
             } else if (matrix[y][x] == 6) {
-                let mg = new MushroomGrower(x, y)
-                MushroomGrowerArr.push(pm)
+                let mg = new MushroomGrower(x, y);
+                MushroomGrowerArr.push(mg);
             }
         }
     }
@@ -94,51 +94,54 @@ function draw() {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
-                fill('green')
+                fill('green');
             } else if (matrix[y][x] == 0) {
-                fill('#acacac')
+                fill('#acacac');
             } else if (matrix[y][x] == 2) {
-                fill('yellow')
+                fill('yellow');
             } else if (matrix[y][x] == 3) {
-                fill('black')
+                fill('black');
             } else if (matrix[y][x] == 4) {
-                fill('red')
+                fill('red');
             } else if (matrix[y][x] == 5) {
-                fill('orange')
+                fill('orange');
             } else if (matrix[y][x] == 6) {
-                fill('blue')
+                fill('blue');
             }
-            rect(x * side, y * side, side, side)
+            rect(x * side, y * side, side, side);
         }
     }
 
     for (let i in grassArr) {
-        grassArr[i].mul()
+        grassArr[i].mul();
     }
     for (let i in grassEaterArr) {
-        grassEaterArr[i].mul()
-        grassEaterArr[i].eat()
+        grassEaterArr[i].mul();
+        grassEaterArr[i].eat();
     }
     for (let i in PredatorArr) {
-        PredatorArr[i].mul()
-        PredatorArr[i].eat()
+        PredatorArr[i].mul();
+        PredatorArr[i].eat();
     }
-    // for (let i in MushroomGrowerArr) {
-    //     MushroomGrowerArr[i].mul()
-}
-    // for (let i in MushroomsArr) {
-    //     MushroomsArr[i].mul()
-    // }
-    // for (let i in PoisonousMushroomsArr) {
-    //     PoisonousMushroomsArr[i].mul()
-    // }
-var clickCount = 0;
-function clickHandler(evt) {
-    clickCount++;
-    console.log(evt);
-    var str = "Thanks for clicking " + clickCount;
-    this.innerText = str;
+    for (let i in MushroomGrowerArr) {
+        MushroomGrowerArr[i].mul()
+    }
+    
 }
 
-var p = document.getElementById("pElement");
-p.addEventListener("click", clickHandler);
+// for (let i in MushroomsArr) {
+//     MushroomsArr[i].mul()
+// }
+// for (let i in PoisonousMushroomsArr) {
+//     PoisonousMushroomsArr[i].mul()
+// }
+// var clickCount = 0;
+// function clickHandler(evt) {
+//     clickCount++;
+//     console.log(evt);
+//     var str = "Thanks for clicking " + clickCount;
+//     this.innerText = str;
+// }
+
+// var p = document.getElementById("pElement");
+// p.addEventListener("click", clickHandler);
