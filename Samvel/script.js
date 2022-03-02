@@ -1,4 +1,4 @@
-function generator(matLen, gr, grEat, pr, M, pm) {
+function generator(matLen, gr, grEat, pr, M, pm, mg) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
@@ -41,6 +41,13 @@ function generator(matLen, gr, grEat, pr, M, pm) {
             matrix[x][y] = 5;
         }
     }
+    for (let i = 0; i < mg; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 6;
+        }
+    }
     return matrix;
 }
 
@@ -53,6 +60,7 @@ let grassEaterArr = []
 let PredatorArr = []
 let MushroomsArr = []
 let PoisonousMushroomsArr = []
+let MushroomGrowerArr = []
 
 function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
@@ -72,9 +80,12 @@ function setup() {
             } else if (matrix[y][x] == 4) {
                 let M = new Mushrooms(x, y)
                 MushroomsArr.push(M)
-            }else if (matrix[y][x] == 5) {
+            } else if (matrix[y][x] == 5) {
                 let pm = new PoisonousMushrooms(x, y)
                 PoisonousMushroomsArr.push(pm)
+            } else if (matrix[y][x] == 6) {
+                let mg = new MushroomGrower(x, y)
+                MushroomGrowerArr.push(pm)
             }
         }
     }
@@ -94,9 +105,11 @@ function draw() {
                 fill('red')
             } else if (matrix[y][x] == 5) {
                 fill('orange')
+            } else if (matrix[y][x] == 6) {
+                fill('blue')
             }
             rect(x * side, y * side, side, side)
-        } 
+        }
     }
 
     for (let i in grassArr) {
@@ -110,10 +123,22 @@ function draw() {
         PredatorArr[i].mul()
         PredatorArr[i].eat()
     }
+    // for (let i in MushroomGrowerArr) {
+    //     MushroomGrowerArr[i].mul()
+}
     // for (let i in MushroomsArr) {
     //     MushroomsArr[i].mul()
     // }
     // for (let i in PoisonousMushroomsArr) {
     //     PoisonousMushroomsArr[i].mul()
     // }
+var clickCount = 0;
+function clickHandler(evt) {
+    clickCount++;
+    console.log(evt);
+    var str = "Thanks for clicking " + clickCount;
+    this.innerText = str;
 }
+
+var p = document.getElementById("pElement");
+p.addEventListener("click", clickHandler);
