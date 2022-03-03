@@ -1,4 +1,4 @@
-class MushroomGrower {
+class FertilGrass {
     constructor(x, y) {
         this.x = x
         this.y = y
@@ -37,12 +37,11 @@ class MushroomGrower {
         if (newCell && this.multiply >= 8) {
             var newX = newCell[0];
             var newY = newCell[1];
-            matrix[newY][newX] = 1;
+            matrix[newY][newX] = 6;
 
-            var newMushroomGrower = new MushroomGrower(newX, newY);
-            MushroomGrowerArr.push(newMushroomGrower);
+            var newFertilGrass = new FertilGrass(newX, newY);
+            FertilGrassArr.push(newFertilGrass);
             this.multiply = 0;
         }
     }
-
 }

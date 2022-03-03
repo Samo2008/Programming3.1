@@ -78,6 +78,9 @@ class Predator {
         var emptyCells2 = this.chooseCell(5);
         var newCell2 = random(emptyCells2);
 
+        var emptyCells3 = this.chooseCell(7);
+        var newCell3 = random(emptyCells3);
+
         if (newCell) {
             this.energy++
             var newX = newCell[0];
@@ -118,6 +121,22 @@ class Predator {
             for (var i in PoisonousMushroomsArr) {
                 if (newX == PoisonousMushroomsArr[i].x && newY == PoisonousMushroomsArr[i].y) {
                     PoisonousMushroomsArr.splice(i, 1);
+                    break;
+                }
+
+            }
+        }
+        else if (newCell3) {
+            this.energy += 5
+            var newX = newCell3[0];
+            var newY = newCell3[1];
+            matrix[newY][newX] = matrix[this.y][this.x]
+            matrix[this.y][this.x] = 0
+            this.x = newX
+            this.y = newY
+            for (var i in MeatArr) {
+                if (newX == MeatArr[i].x && newY == MeatArr[i].y) {
+                    MeatArr.splice(i, 1);
                     break;
                 }
 
