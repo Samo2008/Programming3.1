@@ -76,28 +76,28 @@ function setup() {
     frameRate(3);;
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
-            // if (matrix[y][x] == 1) {
-            //     let gr = new Grass(x, y)
-            //     grassArr.push(gr);
-            // }
-        } if (matrix[y][x] == 2) {
-            let grE = new GrassEater(x, y)
-            grassEaterArr.push(grE);
-        } else if (matrix[y][x] == 3) {
-            let pr = new Predator(x, y);
-            PredatorArr.push(pr);
-        } else if (matrix[y][x] == 4) {
-            let M = new Mushrooms(x, y);
-            MushroomsArr.push(M);
-        } else if (matrix[y][x] == 5) {
-            let pm = new PoisonousMushrooms(x, y);
-            PoisonousMushroomsArr.push(pm);
-        } else if (matrix[y][x] == 6) {
-            let fg = new FertilGrass(x, y);
-            FertilGrassArr.push(fg);
-        } else if (matrix[y][x] == 7) {
-            let mt = new Meat(x, y);
-            MeatArr.push(mt);
+            if (matrix[y][x] == 1) {
+                let gr = new Grass(x, y)
+                grassArr.push(gr);
+            } else if (matrix[y][x] == 2) {
+                let grE = new GrassEater(x, y)
+                grassEaterArr.push(grE);
+            } else if (matrix[y][x] == 3) {
+                let pr = new Predator(x, y);
+                PredatorArr.push(pr);
+            } else if (matrix[y][x] == 4) {
+                let M = new Mushrooms(x, y);
+                MushroomsArr.push(M);
+            } else if (matrix[y][x] == 5) {
+                let pm = new PoisonousMushrooms(x, y);
+                PoisonousMushroomsArr.push(pm);
+            } else if (matrix[y][x] == 6) {
+                let fg = new FertilGrass(x, y);
+                FertilGrassArr.push(fg);
+            } else if (matrix[y][x] == 7) {
+                let mt = new Meat(x, y);
+                MeatArr.push(mt);
+            }
         }
     }
 }

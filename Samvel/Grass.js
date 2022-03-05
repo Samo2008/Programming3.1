@@ -1,3 +1,4 @@
+
 class Grass extends LivingCreature {
     mul() {
         this.multiply++;
@@ -19,9 +20,9 @@ class Grass extends LivingCreature {
 
 // class Grass {
 //     constructor(x, y) {
-//         this.x = x
-//         this.y = y
-//         this.multiply = 0
+//         this.x = x;
+//         this.y = y;
+//         this.multiply = 0;
 //         this.directions = [
 //             [this.x - 1, this.y - 1],
 //             [this.x, this.y - 1],
@@ -33,7 +34,7 @@ class Grass extends LivingCreature {
 //             [this.x + 1, this.y + 1]
 //         ];
 
-//     }
+//     };
 //     chooseCell(character) {
 //         var found = [];
 //         for (var i in this.directions) {
@@ -42,11 +43,11 @@ class Grass extends LivingCreature {
 //             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
 //                 if (matrix[y][x] == character) {
 //                     found.push(this.directions[i]);
-//                 }
-//             }
-//         }
+//                 };
+//             };
+//         };
 //         return found;
-//     }
+//     };
 
 //     mul() {
 //         this.multiply++;
@@ -61,7 +62,7 @@ class Grass extends LivingCreature {
 //             var newGrass = new Grass(newX, newY);
 //             grassArr.push(newGrass);
 //             this.multiply = 0;
-//         }
-//     }
+//         };
+//     };
 
-// }
+// };

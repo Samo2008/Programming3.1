@@ -1,12 +1,8 @@
-class GrassEater {
-    constructor(x, y) {
-        this.x = x
-        this.y = y
-        this.multiply = 0
-        this.directions = [];
-        this.energy = 8
+class GrassEater extends LivingCreature {
+    constructor(x, y, index) {
+        super(x, y, index);
+        this.energy = 8;
     }
-
     getNewCoordinates() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -20,20 +16,9 @@ class GrassEater {
         ];
     }
     chooseCell(character) {
-        this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        this.getNewCoordinates();
+        return super.chooseCell(character);
     }
-
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
@@ -71,6 +56,10 @@ class GrassEater {
     eat() {
         var emptyCells = this.chooseCell(1);
         var newCell = random(emptyCells);
+
+        var emptyCells1 = this.chooseCell(6);
+        var newCell1 = random(emptyCells1);
+
         if (newCell) {
             this.energy++
             var newX = newCell[0];
@@ -85,18 +74,10 @@ class GrassEater {
                     break;
                 }
             }
-
-        } else {
-            this.move()
-        }
-    }
-    eat() {
-        var emptyCells = this.chooseCell(6);
-        var newCell = random(emptyCells);
-        if (newCell) {
-            this.energy += 5
-            var newX = newCell[0];
-            var newY = newCell[1];
+        } else if (newCell1) {
+            this.energy++
+            var newX = newCell1[0];
+            var newY = newCell1[1];
             matrix[newY][newX] = matrix[this.y][this.x]
             matrix[this.y][this.x] = 0
             this.x = newX
@@ -106,9 +87,10 @@ class GrassEater {
                     FertilGrassArr.splice(i, 1);
                     break;
                 }
-            }
 
-        } else {
+            }
+        }
+        else {
             this.move()
         }
     }
