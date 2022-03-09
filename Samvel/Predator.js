@@ -1,10 +1,7 @@
-class Predator {
+class Predator extends LivingCreature {
     constructor(x, y) {
-        this.x = x
-        this.y = y
-        this.multiply = 0
-        this.directions = [];
-        this.energy = 8
+        super(x, y);
+        this.energy = 8;
     }
 
     getNewCoordinates() {
@@ -20,20 +17,10 @@ class Predator {
         ];
     }
     chooseCell(character) {
-        this.getNewCoordinates()
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
+        this.getNewCoordinates();
+        return super.chooseCell(character);
     }
-
+    
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
@@ -94,8 +81,8 @@ class Predator {
                     grassEaterArr.splice(i, 1);
                     break;
                 }
-            } 
-        }else if (newCell1) {
+            }
+        } else if (newCell1) {
             this.energy++
             var newX = newCell1[0];
             var newY = newCell1[1];
@@ -108,9 +95,9 @@ class Predator {
                     MushroomsArr.splice(i, 1);
                     break;
                 }
-                
+
             }
-        }else if (newCell2) {
+        } else if (newCell2) {
             this.energy--
             var newX = newCell2[0];
             var newY = newCell2[1];

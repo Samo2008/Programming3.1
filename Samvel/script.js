@@ -73,14 +73,14 @@ let MeatArr = [];
 function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-    frameRate(3);;
+    frameRate(3);
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
-                let gr = new Grass(x, y)
+                let gr = new Grass(x, y);
                 grassArr.push(gr);
             } else if (matrix[y][x] == 2) {
-                let grE = new GrassEater(x, y)
+                let grE = new GrassEater(x, y);
                 grassEaterArr.push(grE);
             } else if (matrix[y][x] == 3) {
                 let pr = new Predator(x, y);
@@ -97,10 +97,10 @@ function setup() {
             } else if (matrix[y][x] == 7) {
                 let mt = new Meat(x, y);
                 MeatArr.push(mt);
-            }
-        }
-    }
-}
+            };
+        };
+    };
+};
 
 function draw() {
     for (let y = 0; y < matrix.length; y++) {
@@ -123,28 +123,28 @@ function draw() {
                 fill('brown');
             }
             rect(x * side, y * side, side, side);
-        }
-    }
+        };
+    };
 
     for (let i in grassArr) {
         grassArr[i].mul();
-    }
+    };
     for (let i in grassEaterArr) {
         grassEaterArr[i].mul();
         grassEaterArr[i].eat();
-    }
+    };
     for (let i in PredatorArr) {
         PredatorArr[i].mul();
         PredatorArr[i].eat();
-    }
+    };
     for (let i in FertilGrassArr) {
-        FertilGrassArr[i].mul()
-    }
+        FertilGrassArr[i].mul();
+    };
     for (let i in MeatArr) {
-        MeatArr[i].mul()
-    }
+        MeatArr[i].mul();
+    };
 
-}
+};
 
 // for (let i in MushroomsArr) {
 //     MushroomsArr[i].mul()
@@ -152,13 +152,13 @@ function draw() {
 // for (let i in PoisonousMushroomsArr) {
 //     PoisonousMushroomsArr[i].mul()
 // }
-// var clickCount = 0;
-// function clickHandler(evt) {
-//     clickCount++;
-//     console.log(evt);
-//     var str = "Thanks for clicking " + clickCount;
-//     this.innerText = str;
-// }
+var clickCount = 0;
+function clickHandler(evt) {
+    clickCount++;
+    console.log(evt);
+    var str = "https://avatars.mds.yandex.net/i?id=5145a1539b5bf5cef95a48f3f4c6ee32-5267897-images-thumbs&n=13" + clickCount;
+    this.innerText = str;
+};
 
-// var p = document.getElementById("pElement");
-// p.addEventListener("click", clickHandler);
+var p = document.getElementById("pElement");
+p.addEventListener("click", clickHandler);
