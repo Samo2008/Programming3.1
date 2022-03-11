@@ -72,7 +72,7 @@ let MeatArr = [];
 
 function setup() {
     createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
+    background('#A6FF7A');
     frameRate(3);
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
@@ -108,7 +108,7 @@ function draw() {
             if (matrix[y][x] == 1) {
                 fill('green');
             } else if (matrix[y][x] == 0) {
-                fill('#acacac');
+                fill('#A6FF7A');
             } else if (matrix[y][x] == 2) {
                 fill('yellow');
             } else if (matrix[y][x] == 3) {
